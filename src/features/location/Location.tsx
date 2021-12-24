@@ -1,4 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import {
   YMaps,
@@ -9,6 +11,8 @@ import {
   FullscreenControl,
   Placemark,
 } from "react-yandex-maps";
+import { useAppDispatch } from "../../app/hooks";
+import { updateLocation } from "./locationSlice";
 
 const API_KEY = process.env.REACT_APP_YANDEX_MAPS_API_KEY;
 const DEFAULT_MAP_STATE = {
@@ -20,14 +24,26 @@ const DEFAULT_MAP_STATE = {
 const Location: FunctionComponent = () => {
   const [t, i18n] = useTranslation();
   const { language }: any = i18n;
+  const navigate = useNavigate();
 
   const [coords, setCoords] = useState<any>(null);
+
+  const dispatch = useAppDispatch();
 
   const coordsView = coords ? (
     <section>
       <h2>{t("selectedCoordinates")}</h2>
       <h3>{`${t("latitude")}: ${coords[0].toFixed(6)}`}</h3>
       <h3>{`${t("longitude")}: ${coords[1].toFixed(6)}`}</h3>
+      <Button
+        variant="success"
+        onClick={() => {
+          dispatch(updateLocation(coords));
+          navigate("/currentWeather");
+        }}
+      >
+        {t("confirm")}
+      </Button>
     </section>
   ) : (
     <h2>{t("clickOnMap")}</h2>
@@ -39,9 +55,7 @@ const Location: FunctionComponent = () => {
       <YMaps query={{ lang: language, apikey: API_KEY }}>
         <Map
           defaultState={DEFAULT_MAP_STATE}
-          onClick={(e: any) => {
-            setCoords(e.get("coords"));
-          }}
+          onClick={(e: any) => setCoords(e.get("coords"))}
         >
           <ZoomControl options={{ float: "left" }} />
           <FullscreenControl options={{ float: "left" }} />

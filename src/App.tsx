@@ -14,10 +14,10 @@ const App: FunctionComponent = () => {
       <main>
         <Routes>
           <Route path="/" element={<CurrentWeather />} />
-          <Route path="/location" element={<Location />} />
           <Route path="/currentWeather" element={<CurrentWeather />} />
           <Route path="/hourlyWeather" element={<HourlyWeather />} />
           <Route path="/dailyWeather" element={<DailyWeather />} />
+          <Route path="/location" element={<Location />} />
         </Routes>
       </main>
       <footer></footer>

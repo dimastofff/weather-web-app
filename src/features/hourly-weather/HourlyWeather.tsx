@@ -1,19 +1,35 @@
-import React, { FunctionComponent } from "react";
-import { Navigate } from "react-router-dom";
+import React, { FunctionComponent, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { selectHourlyWeather, getHourlyWeather } from "./hourlyWeatherSlice";
+import { selectLocation } from "../location/locationSlice";
 
 const HourlyWeather: FunctionComponent = () => {
-  const [t, i18n] = useTranslation();
+  const { t } = useTranslation();
+  const navigate = useNavigate();
 
-  const weather = null;
+  const weather = useAppSelector(selectHourlyWeather);
+  const location = useAppSelector(selectLocation);
+  const dispatch = useAppDispatch();
 
-  const content = (
+  useEffect(() => {
+    if (!location) {
+      navigate("/location");
+    } else if (!weather) {
+      const [latitude, longitude] = location;
+      const language = t("langCodeForWeatherApi");
+      dispatch(getHourlyWeather({ latitude, longitude, language }));
+    }
+  });
+
+  console.log(weather);
+
+  return (
     <section>
-      <h2>{t("currentWeather")}</h2>
+      <h2>{t("hourlyWeather")}</h2>
     </section>
   );
-
-  return weather ? content : <Navigate to="/location" />;
 };
 
 export default HourlyWeather;

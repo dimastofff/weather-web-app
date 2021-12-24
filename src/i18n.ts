@@ -4,6 +4,7 @@ import { initReactI18next } from "react-i18next";
 const resources = {
   en_US: {
     translation: {
+      langCodeForWeatherApi: "en",
       welcoming: "Weather from OpenWeatherMapAPI",
       currentWeather: "Current weather",
       hourlyWeather: "Hourly weather",
@@ -13,10 +14,12 @@ const resources = {
       selectedCoordinates: "Selected coordinates",
       latitude: "Latitude",
       longitude: "Longitude",
+      confirm: "Confirm",
     },
   },
   ru_RU: {
     translation: {
+      langCodeForWeatherApi: "ru",
       welcoming: "Погода из OpenWeatherMapAPI",
       currentWeather: "Текущая погода",
       hourlyWeather: "Прогноз погоды по часам",
@@ -26,6 +29,7 @@ const resources = {
       selectedCoordinates: "Выбранные координаты",
       latitude: "Широта",
       longitude: "Долгота",
+      confirm: "Подтвердить",
     },
   },
 };

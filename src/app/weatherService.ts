@@ -8,7 +8,7 @@ export function fetchCurrentWeather(
   language: string
 ): Promise<AxiosResponse<any, any>> {
   return axios.get(
-    `http://api.openweathermap.org/data/2.5/onecall?appid=${APP_ID}&lat=${latitude}&lon=${longitude}&lang=${language}&&exclude=minutely,hourly,daily`
+    `http://api.openweathermap.org/data/2.5/onecall?appid=${APP_ID}&lat=${latitude}&lon=${longitude}&lang=${language}&exclude=minutely,hourly,daily&units=metric`
   );
 }
 
@@ -18,7 +18,7 @@ export function fetchHourlyWeather(
   language: string
 ): Promise<AxiosResponse<any, any>> {
   return axios.get(
-    `http://api.openweathermap.org/data/2.5/onecall?appid=${APP_ID}&lat=${latitude}&lon=${longitude}&lang=${language}&&exclude=minutely,current,daily`
+    `http://api.openweathermap.org/data/2.5/onecall?appid=${APP_ID}&lat=${latitude}&lon=${longitude}&lang=${language}&exclude=minutely,current,dail&units=metric`
   );
 }
 
@@ -28,6 +28,6 @@ export function fetchDailyWeather(
   language: string
 ): Promise<AxiosResponse<any, any>> {
   return axios.get(
-    `http://api.openweathermap.org/data/2.5/onecall?appid=${APP_ID}&lat=${latitude}&lon=${longitude}&lang=${language}&&exclude=minutely,current,hourly`
+    `http://api.openweathermap.org/data/2.5/onecall?appid=${APP_ID}&lat=${latitude}&lon=${longitude}&lang=${language}&exclude=minutely,current,hourly&units=metric`
   );
 }

@@ -2,10 +2,15 @@ import React, { FunctionComponent, useState } from "react";
 import { Link } from "react-router-dom";
 import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
+import { useAppSelector } from "../../app/hooks";
+import { selectLocation } from "../location/locationSlice";
 
 const Header: FunctionComponent = () => {
-  const [t, i18n] = useTranslation();
+  const { t } = useTranslation();
+
   const [viewMode, setViewMode] = useState(t("currentWeather"));
+
+  const location = useAppSelector(selectLocation);
 
   return (
     <header>
@@ -40,6 +45,10 @@ const Header: FunctionComponent = () => {
                   {t("dailyWeather")}
                 </NavDropdown.Item>
               </NavDropdown>
+              <Nav.Link as={Link} to="location">
+                <img src="images/geo-alt.svg" alt="geo" />
+                {location?.map((coord) => `${coord.toFixed(6)}°`).join(", ")}
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
