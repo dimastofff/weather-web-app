@@ -22,9 +22,9 @@ const DEFAULT_MAP_STATE = {
 };
 
 const Location: FunctionComponent = () => {
-  const [t, i18n] = useTranslation();
-  const { language }: any = i18n;
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const { language }: any = i18n;
 
   const [coords, setCoords] = useState<any>(null);
 
@@ -52,7 +52,7 @@ const Location: FunctionComponent = () => {
   return (
     <section>
       {coordsView}
-      <YMaps query={{ lang: language, apikey: API_KEY }}>
+      <YMaps key={language} query={{ lang: language, apikey: API_KEY }}>
         <Map
           defaultState={DEFAULT_MAP_STATE}
           onClick={(e: any) => setCoords(e.get("coords"))}

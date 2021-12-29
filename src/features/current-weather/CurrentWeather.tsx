@@ -18,7 +18,7 @@ const CurrentWeather: FunctionComponent = () => {
       navigate("/location");
     } else if (!weather) {
       const [latitude, longitude] = location;
-      const language = t("langCodeForWeatherApi");
+      const language = t("shortLanguageCode");
       dispatch(getCurrentWeather({ latitude, longitude, language }));
     }
   });

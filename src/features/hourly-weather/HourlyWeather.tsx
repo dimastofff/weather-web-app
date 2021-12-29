@@ -18,7 +18,7 @@ const HourlyWeather: FunctionComponent = () => {
       navigate("/location");
     } else if (!weather) {
       const [latitude, longitude] = location;
-      const language = t("langCodeForWeatherApi");
+      const language = t("shortLanguageCode");
       dispatch(getHourlyWeather({ latitude, longitude, language }));
     }
   });

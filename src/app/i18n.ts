@@ -1,14 +1,18 @@
 import i18n from "i18next";
+import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
 const resources = {
   en_US: {
     translation: {
-      langCodeForWeatherApi: "en",
+      shortLanguageCode: "en",
+      fullLanguageName: "English",
+      english: "English",
+      russian: "Russian",
       welcoming: "Weather from OpenWeatherMapAPI",
       currentWeather: "Current weather",
-      hourlyWeather: "Hourly weather",
-      dailyWeather: "Daily weather",
+      hourlyWeather: "Forecast for 48 hours",
+      dailyWeather: "Forecast for 8 days",
       clickOnMap:
         "Mark the place on the map for which you want to know the weather forecast",
       selectedCoordinates: "Selected coordinates",
@@ -19,11 +23,14 @@ const resources = {
   },
   ru_RU: {
     translation: {
-      langCodeForWeatherApi: "ru",
+      shortLanguageCode: "ru",
+      fullLanguageName: "Русский",
+      english: "Английский",
+      russian: "Русский",
       welcoming: "Погода из OpenWeatherMapAPI",
       currentWeather: "Текущая погода",
-      hourlyWeather: "Прогноз погоды по часам",
-      dailyWeather: "Прогноз погоды по дням",
+      hourlyWeather: "Прогноз на 48 часов",
+      dailyWeather: "Прогноз на 8 дней",
       clickOnMap:
         "Отметьте на карте место, для которого вы хотите узнать прогноз погоды",
       selectedCoordinates: "Выбранные координаты",
@@ -34,12 +41,14 @@ const resources = {
   },
 };
 
-i18n.use(initReactI18next).init({
-  resources,
-  lng: "en_US",
-  interpolation: {
-    escapeValue: false,
-  },
-});
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    resources,
+    interpolation: {
+      escapeValue: false,
+    },
+  });
 
 export default i18n;
