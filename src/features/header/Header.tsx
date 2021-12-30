@@ -11,47 +11,62 @@ const Header: FunctionComponent = () => {
 
   const location = useAppSelector(selectLocation);
 
+  const languagesDropdown = (
+    <NavDropdown id="collasible-nav-dropdown" title={t("fullLanguageName")}>
+      <NavDropdown.Item
+        eventKey="1"
+        onClick={() => i18n.changeLanguage("en_US")}
+      >
+        {t("english")}
+      </NavDropdown.Item>
+      <NavDropdown.Item
+        eventKey="2"
+        onClick={() => i18n.changeLanguage("ru_RU")}
+      >
+        {t("russian")}
+      </NavDropdown.Item>
+    </NavDropdown>
+  );
+
+  const startLinksNav = (
+    <Nav className="me-auto">
+      <Nav.Link eventKey="3" as={Link} to="/currentWeather">
+        {t("currentWeather")}
+      </Nav.Link>
+      <Nav.Link eventKey="4" as={Link} to="/hourlyWeather">
+        {t("hourlyWeather")}
+      </Nav.Link>
+      <Nav.Link eventKey="5" as={Link} to="/dailyWeather">
+        {t("dailyWeather")}
+      </Nav.Link>
+    </Nav>
+  );
+
+  const endLinksNav = (
+    <Nav>
+      <Nav.Link eventKey="6" as={Link} to="/location">
+        <img
+          className={styles.locationImg}
+          src="images/geo-alt.svg"
+          alt="geo"
+        />
+        {location?.map((coord: number) => `${coord.toFixed(6)}°`).join(", ")}
+      </Nav.Link>
+      {languagesDropdown}
+    </Nav>
+  );
+
   return (
     <header>
-      <Navbar bg="light" expand="lg">
+      <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
         <Container>
           <Navbar.Brand as={Link} to="/">
             <h1 className={styles.brand}>{t("welcoming")}</h1>
           </Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link as={Link} to="/currentWeather">
-                {t("currentWeather")}
-              </Nav.Link>
-              <Nav.Link as={Link} to="/hourlyWeather">
-                {t("hourlyWeather")}
-              </Nav.Link>
-              <Nav.Link as={Link} to="/dailyWeather">
-                {t("dailyWeather")}
-              </Nav.Link>
-              <Nav.Link as={Link} to="/location">
-                <img
-                  className={styles.locationImg}
-                  src="images/geo-alt.svg"
-                  alt="geo"
-                />
-                {location
-                  ?.map((coord: number) => `${coord.toFixed(6)}°`)
-                  .join(", ")}
-              </Nav.Link>
-              <NavDropdown
-                title={t("fullLanguageName")}
-                id="basic-nav-dropdown"
-              >
-                <NavDropdown.Item onClick={() => i18n.changeLanguage("en_US")}>
-                  {t("english")}
-                </NavDropdown.Item>
-                <NavDropdown.Item onClick={() => i18n.changeLanguage("ru_RU")}>
-                  {t("russian")}
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            {startLinksNav}
+            {endLinksNav}
           </Navbar.Collapse>
         </Container>
       </Navbar>
