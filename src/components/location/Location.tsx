@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Card, ListGroup } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import {
   YMaps,
@@ -30,23 +30,37 @@ const Location: FunctionComponent = () => {
 
   const dispatch = useAppDispatch();
 
-  const coordsView = coords ? (
-    <section>
-      <h2>{t("selectedCoordinates")}</h2>
-      <h3>{`${t("latitude")}: ${coords[0].toFixed(6)}`}</h3>
-      <h3>{`${t("longitude")}: ${coords[1].toFixed(6)}`}</h3>
-      <Button
-        variant="success"
-        onClick={() => {
-          dispatch(updateLocation(coords));
-          navigate("/currentWeather");
-        }}
-      >
-        {t("confirm")}
-      </Button>
-    </section>
-  ) : (
-    <h2 className="fs-6 text-center">{t("clickOnMap")}</h2>
+  const coordsView = (
+    <Card className="w-100">
+      <Card.Body className="text-center">
+        {coords ? (
+          <>
+            <Card.Title>{t("selectedCoordinates")}</Card.Title>
+            <Card.Text>
+              <ListGroup variant="flush">
+                <ListGroup.Item>
+                  {t("latitude")}: {coords[0].toFixed(6)}
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  {t("longitude")}: {coords[1].toFixed(6)}
+                </ListGroup.Item>
+              </ListGroup>
+            </Card.Text>
+            <Button
+              variant="success"
+              onClick={() => {
+                dispatch(updateLocation(coords));
+                navigate("/currentWeather");
+              }}
+            >
+              {t("confirm")}
+            </Button>
+          </>
+        ) : (
+          <Card.Title className="text-center">{t("clickOnMap")}</Card.Title>
+        )}
+      </Card.Body>
+    </Card>
   );
 
   return (
@@ -54,7 +68,7 @@ const Location: FunctionComponent = () => {
       {coordsView}
       <YMaps key={language} query={{ lang: language, apikey: API_KEY }}>
         <Map
-          height="320px"
+          height="290px"
           width="100%"
           defaultState={DEFAULT_MAP_STATE}
           onClick={(e: any) => setCoords(e.get("coords"))}
