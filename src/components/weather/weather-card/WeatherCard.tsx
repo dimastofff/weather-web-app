@@ -1,36 +1,47 @@
 import React, { FunctionComponent } from "react";
 import { Card, ListGroup } from "react-bootstrap";
+import { useTranslation } from "react-i18next";
 import { Weather, Alert } from "../../../app/types";
 
 interface WeatherCardProps {
   weather: Weather;
   alerts: Alert[];
-  language: string;
 }
 
 const WeatherCard: FunctionComponent<WeatherCardProps> = ({
   weather,
   alerts,
-  language,
 }) => {
+  const { t } = useTranslation();
+
+  const date = new Date(weather.dt * 1000).toLocaleString(
+    t("shortLanguageCode")
+  );
+
+  const temperature =
+    typeof weather.temp === "number" ? `${Math.round(weather.temp)}°` : null;
+  const feelsLike =
+    typeof weather.feels_like === "number"
+      ? t("feelsLike", { value: Math.round(weather.feels_like) })
+      : null;
+  const humidity = t("humidity", { value: weather.humidity });
+  const pressure = t("pressure", { value: weather.pressure });
+
   return (
-    <Card className="text-center" style={{ width: "18rem" }}>
+    <Card>
       <Card.Img
+        className="w-50 mx-auto"
         variant="top"
-        src={`/images/weather/${weather?.weather[0].icon}.png`}
+        src={`/images/weather/${weather.weather[0].icon}.png`}
       />
       <Card.Body>
-        <Card.Title className="fs-1">{weather.temp}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">
-          {new Date(weather.dt * 1000).toLocaleString(language)}
-        </Card.Subtitle>
+        <Card.Title className="fs-1">{temperature}</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">{date}</Card.Subtitle>
       </Card.Body>
       <ListGroup className="list-group-flush">
-        <ListGroup.Item>{weather.feels_like}</ListGroup.Item>
-        <ListGroup.Item>{weather.humidity}</ListGroup.Item>
-        <ListGroup.Item>{weather.pressure}</ListGroup.Item>
-        <ListGroup.Item>{weather.wind_deg}</ListGroup.Item>
-        <ListGroup.Item>{weather.wind_speed}</ListGroup.Item>
+        <ListGroup.Item>{feelsLike}</ListGroup.Item>
+        <ListGroup.Item>{humidity}</ListGroup.Item>
+        <ListGroup.Item>{pressure}</ListGroup.Item>
       </ListGroup>
     </Card>
   );

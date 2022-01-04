@@ -49,12 +49,8 @@ const Header: FunctionComponent = () => {
           src="images/geo-alt.svg"
           alt="geo"
         />
-        {location
-          ? t("headerCoords", {
-              latitude: location[0].toFixed(6),
-              longitude: location[1].toFixed(6),
-            })
-          : null}
+
+        {location?.map((coord: number) => `${coord.toFixed(6)}°`).join(", ")}
       </Nav.Link>
       {languagesDropdown}
     </Nav>

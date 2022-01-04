@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Container } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { selectCurrentWeather, getCurrentWeather } from "./currentWeatherSlice";
@@ -25,16 +26,12 @@ const CurrentWeather: FunctionComponent = () => {
   }, []);
 
   return (
-    <section>
+    <Container className="text-center" style={{ maxWidth: "240px" }}>
       <h2>{t("currentWeather")}</h2>
       {weather ? (
-        <WeatherCard
-          weather={weather.current}
-          alerts={weather.alerts}
-          language={t("shortLanguageCode")}
-        />
+        <WeatherCard weather={weather.current} alerts={weather.alerts} />
       ) : null}
-    </section>
+    </Container>
   );
 };
 
