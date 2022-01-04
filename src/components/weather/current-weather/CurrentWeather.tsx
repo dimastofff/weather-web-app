@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { selectCurrentWeather, getCurrentWeather } from "./currentWeatherSlice";
 import { selectLocation } from "../../location/locationSlice";
+import WeatherCard from "../weather-card/WeatherCard";
 
 const CurrentWeather: FunctionComponent = () => {
   const { t } = useTranslation();
@@ -21,13 +22,18 @@ const CurrentWeather: FunctionComponent = () => {
       const language = t("shortLanguageCode");
       dispatch(getCurrentWeather({ latitude, longitude, language }));
     }
-  });
-
-  console.log(weather);
+  }, []);
 
   return (
     <section>
       <h2>{t("currentWeather")}</h2>
+      {weather ? (
+        <WeatherCard
+          weather={weather.current}
+          alerts={weather.alerts}
+          language={t("shortLanguageCode")}
+        />
+      ) : null}
     </section>
   );
 };

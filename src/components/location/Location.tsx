@@ -36,16 +36,14 @@ const Location: FunctionComponent = () => {
         {coords ? (
           <>
             <Card.Title>{t("selectedCoordinates")}</Card.Title>
-            <Card.Text>
-              <ListGroup variant="flush">
-                <ListGroup.Item>
-                  {t("latitude")}: {coords[0].toFixed(6)}
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  {t("longitude")}: {coords[1].toFixed(6)}
-                </ListGroup.Item>
-              </ListGroup>
-            </Card.Text>
+            <ListGroup variant="flush">
+              <ListGroup.Item>
+                {t("latitude", { value: coords[0].toFixed(6) })}
+              </ListGroup.Item>
+              <ListGroup.Item>
+                {t("longitude", { value: coords[1].toFixed(6) })}
+              </ListGroup.Item>
+            </ListGroup>
             <Button
               variant="success"
               onClick={() => {
