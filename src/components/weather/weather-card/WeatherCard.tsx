@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import { Card, ListGroup } from "react-bootstrap";
+import { Card, ListGroup, Accordion } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { Weather, Alert } from "../../../app/types";
 
@@ -38,11 +38,18 @@ const WeatherCard: FunctionComponent<WeatherCardProps> = ({
         <Card.Title className="fs-1">{temperature}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">{date}</Card.Subtitle>
       </Card.Body>
-      <ListGroup className="list-group-flush">
-        <ListGroup.Item>{feelsLike}</ListGroup.Item>
-        <ListGroup.Item>{humidity}</ListGroup.Item>
-        <ListGroup.Item>{pressure}</ListGroup.Item>
-      </ListGroup>
+      <Accordion>
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>{t("moreDetails")}</Accordion.Header>
+          <Accordion.Body>
+            <ListGroup className="list-group-flush">
+              <ListGroup.Item>{feelsLike}</ListGroup.Item>
+              <ListGroup.Item>{humidity}</ListGroup.Item>
+              <ListGroup.Item>{pressure}</ListGroup.Item>
+            </ListGroup>
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
     </Card>
   );
 };

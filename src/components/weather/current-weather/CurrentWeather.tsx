@@ -26,8 +26,8 @@ const CurrentWeather: FunctionComponent = () => {
   }, []);
 
   return (
-    <Container className="text-center" style={{ maxWidth: "240px" }}>
-      <h2>{t("currentWeather")}</h2>
+    <Container fluid className="text-center" style={{ maxWidth: "240px" }}>
+      <h2 className="my-3">{t("currentWeather")}</h2>
       {weather ? (
         <WeatherCard weather={weather.current} alerts={weather.alerts} />
       ) : null}

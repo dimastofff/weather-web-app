@@ -13,13 +13,13 @@ const Header: FunctionComponent = () => {
   const languagesDropdown = (
     <NavDropdown id="collasible-nav-dropdown" title={t("fullLanguageName")}>
       <NavDropdown.Item
-        eventKey="1"
+        eventKey="0"
         onClick={() => i18n.changeLanguage("en_US")}
       >
         {t("english")}
       </NavDropdown.Item>
       <NavDropdown.Item
-        eventKey="2"
+        eventKey="1"
         onClick={() => i18n.changeLanguage("ru_RU")}
       >
         {t("russian")}
@@ -29,13 +29,13 @@ const Header: FunctionComponent = () => {
 
   const startLinksNav = (
     <Nav className="me-auto">
-      <Nav.Link eventKey="3" as={Link} to="/currentWeather">
+      <Nav.Link eventKey="2" as={Link} to="/currentWeather">
         {t("currentWeather")}
       </Nav.Link>
-      <Nav.Link eventKey="4" as={Link} to="/hourlyWeather">
+      <Nav.Link eventKey="3" as={Link} to="/hourlyWeather">
         {t("hourlyWeather")}
       </Nav.Link>
-      <Nav.Link eventKey="5" as={Link} to="/dailyWeather">
+      <Nav.Link eventKey="4" as={Link} to="/dailyWeather">
         {t("dailyWeather")}
       </Nav.Link>
     </Nav>
@@ -43,7 +43,7 @@ const Header: FunctionComponent = () => {
 
   const endLinksNav = (
     <Nav>
-      <Nav.Link eventKey="6" as={Link} to="/location">
+      <Nav.Link eventKey="5" as={Link} to="/location">
         <img
           style={{ height: "24px", width: "24px" }}
           src="images/geo-alt.svg"
