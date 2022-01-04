@@ -46,7 +46,7 @@ const Location: FunctionComponent = () => {
       </Button>
     </section>
   ) : (
-    <h2>{t("clickOnMap")}</h2>
+    <h2 className="fs-6 text-center">{t("clickOnMap")}</h2>
   );
 
   return (
@@ -54,6 +54,8 @@ const Location: FunctionComponent = () => {
       {coordsView}
       <YMaps key={language} query={{ lang: language, apikey: API_KEY }}>
         <Map
+          height="320px"
+          width="100%"
           defaultState={DEFAULT_MAP_STATE}
           onClick={(e: any) => setCoords(e.get("coords"))}
         >

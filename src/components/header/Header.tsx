@@ -46,7 +46,7 @@ const Header: FunctionComponent = () => {
     <Nav>
       <Nav.Link eventKey="6" as={Link} to="/location">
         <img
-          className={styles.locationImg}
+          className={styles.locationImage}
           src="images/geo-alt.svg"
           alt="geo"
         />
@@ -61,7 +61,7 @@ const Header: FunctionComponent = () => {
       <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
         <Container>
           <Navbar.Brand as={Link} to="/">
-            <h1 className={styles.brand}>{t("welcoming")}</h1>
+            <h1>{t("welcoming")}</h1>
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
