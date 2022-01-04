@@ -1,43 +1,57 @@
 import React, { FunctionComponent } from "react";
 import { Card, ListGroup, Accordion } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
-import { Weather, Alert } from "../../../app/types";
+import { Weather } from "../../../app/types";
 
 interface WeatherCardProps {
   weather: Weather;
-  alerts: Alert[];
+  type: "current" | "hourly" | "daily";
 }
 
 const WeatherCard: FunctionComponent<WeatherCardProps> = ({
   weather,
-  alerts,
+  type,
 }) => {
   const { t } = useTranslation();
 
-  const date = new Date(weather.dt * 1000).toLocaleString(
-    t("shortLanguageCode")
-  );
-
-  const temperature =
-    typeof weather.temp === "number" ? `${Math.round(weather.temp)}°` : null;
+  const date =
+    type === "daily"
+      ? new Date(weather.dt * 1000).toLocaleDateString(t("shortLanguageCode"))
+      : new Date(weather.dt * 1000).toLocaleString(t("shortLanguageCode"));
   const feelsLike =
     typeof weather.feels_like === "number"
       ? t("feelsLike", { value: Math.round(weather.feels_like) })
-      : null;
+      : t("feelsLike", { value: Math.round(weather.feels_like.day) });
   const humidity = t("humidity", { value: weather.humidity });
   const pressure = t("pressure", { value: weather.pressure });
 
+  const temperatureView =
+    typeof weather.temp === "number" ? (
+      <Card.Body>
+        <Card.Title className="fs-1">{`${Math.round(
+          weather.temp
+        )}°`}</Card.Title>
+      </Card.Body>
+    ) : (
+      <Card.Body className="d-flex flex-row justify-content-evenly">
+        <Card.Title className="fs-1">{`${Math.round(
+          weather.temp.day
+        )}°`}</Card.Title>
+        <Card.Title className="fs-1 text-muted">{`${Math.round(
+          weather.temp.night
+        )}°`}</Card.Title>
+      </Card.Body>
+    );
+
   return (
-    <Card>
+    <Card className="m-1" style={{ width: "240px" }}>
+      <Card.Header>{date}</Card.Header>
       <Card.Img
         className="w-50 mx-auto"
         variant="top"
         src={`/images/weather/${weather.weather[0].icon}.png`}
       />
-      <Card.Body>
-        <Card.Title className="fs-1">{temperature}</Card.Title>
-        <Card.Subtitle className="mb-2 text-muted">{date}</Card.Subtitle>
-      </Card.Body>
+      {temperatureView}
       <Accordion>
         <Accordion.Item eventKey="0">
           <Accordion.Header>{t("moreDetails")}</Accordion.Header>

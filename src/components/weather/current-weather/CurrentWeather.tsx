@@ -26,12 +26,14 @@ const CurrentWeather: FunctionComponent = () => {
   }, []);
 
   return (
-    <Container fluid className="text-center" style={{ maxWidth: "240px" }}>
-      <h2 className="my-3">{t("currentWeather")}</h2>
-      {weather ? (
-        <WeatherCard weather={weather.current} alerts={weather.alerts} />
-      ) : null}
-    </Container>
+    <>
+      <h2 className="text-center my-3">{t("currentWeather")}</h2>
+      <Container fluid className="d-flex justify-content-center text-center">
+        {weather ? (
+          <WeatherCard type="current" weather={weather.current} />
+        ) : null}
+      </Container>
+    </>
   );
 };
 

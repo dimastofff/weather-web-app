@@ -12,7 +12,7 @@ const resources = {
       welcoming: "Weather",
       currentWeather: "Current weather",
       hourlyWeather: "Forecast for 48 hours",
-      dailyWeather: "Forecast for 8 days",
+      dailyWeather: "Forecast for the week",
       clickOnMap:
         "Mark the place on the map for which you want to know the weather forecast",
       selectedCoordinates: "Selected coordinates",
@@ -34,7 +34,7 @@ const resources = {
       welcoming: "Погода",
       currentWeather: "Текущая погода",
       hourlyWeather: "Прогноз на 48 часов",
-      dailyWeather: "Прогноз на 8 дней",
+      dailyWeather: "Прогноз на неделю",
       clickOnMap:
         "Отметьте на карте место, для которого вы хотите узнать прогноз погоды",
       selectedCoordinates: "Выбранные координаты",

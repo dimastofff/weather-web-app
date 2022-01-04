@@ -4,12 +4,12 @@ export type CurrentWeather = {
 };
 
 export type HourlyWeather = {
-  hourly: Weather;
+  hourly: Weather[];
   alerts: Alert[];
 };
 
 export type DailyWeather = {
-  daily: Weather;
+  daily: Weather[];
   alerts: Alert[];
 };
 
