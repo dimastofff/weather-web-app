@@ -3,12 +3,10 @@ import { RootState } from "../../app/store";
 
 export interface LocationState {
   value: number[] | null;
-  status: "idle" | "loading" | "failed";
 }
 
 const initialState: LocationState = {
   value: null,
-  status: "idle",
 };
 
 export const locationSlice = createSlice({
