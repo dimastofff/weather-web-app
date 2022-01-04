@@ -4,12 +4,12 @@ import { HourlyWeather } from "../../../app/types";
 import { fetchHourlyWeather } from "../weatherService";
 
 export interface HourlyWeatherState {
-  value: HourlyWeather | null;
+  value?: HourlyWeather;
   status: "idle" | "loading" | "failed";
 }
 
 const initialState: HourlyWeatherState = {
-  value: null,
+  value: undefined,
   status: "idle",
 };
 

@@ -15,8 +15,8 @@ export type DailyWeather = {
 
 export type Weather = {
   dt: number;
-  sunrise: number | undefined;
-  sunset: number | undefined;
+  sunrise?: number;
+  sunset?: number;
   temp: number | DailyTemperature;
   feels_like: number | DailyTemperature;
   pressure: number;

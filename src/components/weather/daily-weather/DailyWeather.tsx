@@ -26,8 +26,6 @@ const DailyWeather: FunctionComponent = () => {
     }
   });
 
-  console.log(weather);
-
   return (
     <>
       <h2 className="text-center my-3">{t("dailyWeather")}</h2>

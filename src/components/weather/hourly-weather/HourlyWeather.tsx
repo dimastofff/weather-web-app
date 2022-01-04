@@ -23,8 +23,6 @@ const HourlyWeather: FunctionComponent = () => {
     }
   });
 
-  console.log(weather);
-
   return (
     <section>
       <h2>{t("hourlyWeather")}</h2>

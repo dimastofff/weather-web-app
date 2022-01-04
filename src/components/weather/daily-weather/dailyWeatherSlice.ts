@@ -4,12 +4,12 @@ import { DailyWeather } from "../../../app/types";
 import { fetchDailyWeather } from "../weatherService";
 
 export interface DailyWeatherState {
-  value: DailyWeather | null;
+  value?: DailyWeather;
   status: "idle" | "loading" | "failed";
 }
 
 const initialState: DailyWeatherState = {
-  value: null,
+  value: undefined,
   status: "idle",
 };
 

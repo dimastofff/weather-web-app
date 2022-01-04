@@ -2,11 +2,11 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 
 export interface LocationState {
-  value: number[] | null;
+  value?: number[];
 }
 
 const initialState: LocationState = {
-  value: null,
+  value: undefined,
 };
 
 export const locationSlice = createSlice({
