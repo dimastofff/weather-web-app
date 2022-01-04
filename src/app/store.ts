@@ -1,8 +1,8 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
-import locationReducer from "../features/location/locationSlice";
-import currentWeatherReducer from "../features/current-weather/currentWeatherSlice";
-import dailyWeatherReducer from "../features/daily-weather/dailyWeatherSlice";
-import hourlyWeatherReducer from "../features/hourly-weather/hourlyWeatherSlice";
+import locationReducer from "../components/location/locationSlice";
+import currentWeatherReducer from "../components/weather/current-weather/currentWeatherSlice";
+import dailyWeatherReducer from "../components/weather/daily-weather/dailyWeatherSlice";
+import hourlyWeatherReducer from "../components/weather/hourly-weather/hourlyWeatherSlice";
 
 export const store = configureStore({
   reducer: {

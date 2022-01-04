@@ -1,15 +1,15 @@
 import React, { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { selectCurrentWeather, getCurrentWeather } from "./currentWeatherSlice";
-import { selectLocation } from "../location/locationSlice";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
+import { selectHourlyWeather, getHourlyWeather } from "./hourlyWeatherSlice";
+import { selectLocation } from "../../location/locationSlice";
 
-const CurrentWeather: FunctionComponent = () => {
+const HourlyWeather: FunctionComponent = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
 
-  const weather = useAppSelector(selectCurrentWeather);
+  const weather = useAppSelector(selectHourlyWeather);
   const location = useAppSelector(selectLocation);
   const dispatch = useAppDispatch();
 
@@ -19,7 +19,7 @@ const CurrentWeather: FunctionComponent = () => {
     } else if (!weather) {
       const [latitude, longitude] = location;
       const language = t("shortLanguageCode");
-      dispatch(getCurrentWeather({ latitude, longitude, language }));
+      dispatch(getHourlyWeather({ latitude, longitude, language }));
     }
   });
 
@@ -27,9 +27,9 @@ const CurrentWeather: FunctionComponent = () => {
 
   return (
     <section>
-      <h2>{t("currentWeather")}</h2>
+      <h2>{t("hourlyWeather")}</h2>
     </section>
   );
 };
 
-export default CurrentWeather;
+export default HourlyWeather;

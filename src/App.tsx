@@ -1,10 +1,10 @@
 import React, { FunctionComponent } from "react";
 import { Routes, Route } from "react-router-dom";
-import Header from "./features/header/Header";
-import Location from "./features/location/Location";
-import CurrentWeather from "./features/current-weather/CurrentWeather";
-import HourlyWeather from "./features/hourly-weather/HourlyWeather";
-import DailyWeather from "./features/daily-weather/DailyWeather";
+import Header from "./components/header/Header";
+import Location from "./components/location/Location";
+import CurrentWeather from "./components/weather/current-weather/CurrentWeather";
+import HourlyWeather from "./components/weather/hourly-weather/HourlyWeather";
+import DailyWeather from "./components/weather/daily-weather/DailyWeather";
 import "./App.css";
 
 const App: FunctionComponent = () => {

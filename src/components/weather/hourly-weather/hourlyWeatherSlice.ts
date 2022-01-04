@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
-import { HourlyWeather } from "../../app/types";
-import { fetchHourlyWeather } from "../../app/weatherService";
+import { RootState } from "../../../app/store";
+import { HourlyWeather } from "../../../app/types";
+import { fetchHourlyWeather } from "../weatherService";
 
 export interface HourlyWeatherState {
   value: HourlyWeather | null;

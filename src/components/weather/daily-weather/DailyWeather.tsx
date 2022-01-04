@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { selectDailyWeather, getDailyWeather } from "./dailyWeatherSlice";
-import { selectLocation } from "../location/locationSlice";
+import { selectLocation } from "../../location/locationSlice";
 
 const DailyWeather: FunctionComponent = () => {
   const { t } = useTranslation();
