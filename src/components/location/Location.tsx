@@ -48,7 +48,7 @@ const Location: FunctionComponent = () => {
               variant="success"
               onClick={() => {
                 dispatch(updateLocation(coords));
-                navigate("/currentWeather");
+                navigate(-1);
               }}
             >
               {t("confirm")}
