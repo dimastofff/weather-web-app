@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import { Card, Placeholder } from "react-bootstrap";
 
-const CardPlaceholder: FunctionComponent = () => {
+const WeatherPlaceholder: FunctionComponent = () => {
   return (
     <Card style={{ width: "240px", height: "300px" }}>
       <Placeholder as={Card.Header} animation="glow">
@@ -24,4 +24,4 @@ const CardPlaceholder: FunctionComponent = () => {
   );
 };
 
-export default CardPlaceholder;
+export default WeatherPlaceholder;
