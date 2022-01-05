@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { selectCurrentWeather, getCurrentWeather } from "./currentWeatherSlice";
 import { selectLocation } from "../../location/locationSlice";
 import WeatherCard from "../weather-card/WeatherCard";
+import CardPlaceholder from "../card-placeholder/CardPlaceholder";
 
 const CurrentWeather: FunctionComponent = () => {
   const { t } = useTranslation();
@@ -31,7 +32,9 @@ const CurrentWeather: FunctionComponent = () => {
       <Container fluid className="d-flex justify-content-center text-center">
         {weather ? (
           <WeatherCard type="current" weather={weather.current} />
-        ) : null}
+        ) : (
+          <CardPlaceholder />
+        )}
       </Container>
     </>
   );

@@ -7,6 +7,7 @@ import { selectDailyWeather, getDailyWeather } from "./dailyWeatherSlice";
 import { selectLocation } from "../../location/locationSlice";
 import WeatherCard from "../weather-card/WeatherCard";
 import { Weather } from "../../../app/types";
+import CardPlaceholder from "../card-placeholder/CardPlaceholder";
 
 const DailyWeather: FunctionComponent = () => {
   const { t } = useTranslation();
@@ -37,7 +38,9 @@ const DailyWeather: FunctionComponent = () => {
           ? weather.daily.map((day: Weather) => (
               <WeatherCard key={day.dt} type="daily" weather={day} />
             ))
-          : null}
+          : Array.from(Array(8).keys()).map((value: number) => (
+              <CardPlaceholder key={value} />
+            ))}
       </Container>
     </>
   );
