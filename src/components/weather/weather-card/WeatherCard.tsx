@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { Card, ListGroup, Accordion } from "react-bootstrap";
+import Moment from "react-moment";
 import { useTranslation } from "react-i18next";
 import { Weather } from "../../../app/types";
 
@@ -15,9 +16,19 @@ const WeatherCard: FunctionComponent<WeatherCardProps> = ({
   const { t } = useTranslation();
 
   const date =
-    type === "daily"
-      ? new Date(weather.dt * 1000).toLocaleDateString(t("shortLanguageCode"))
-      : new Date(weather.dt * 1000).toLocaleString(t("shortLanguageCode"));
+    type === "daily" ? (
+      <Moment unix format="ddd, D MMM" locale={t("shortLanguageCode")}>
+        {weather.dt}
+      </Moment>
+    ) : type === "current" ? (
+      <Moment unix format="D MMMM LT" locale={t("shortLanguageCode")}>
+        {weather.dt}
+      </Moment>
+    ) : (
+      <Moment unix format="LT" locale={t("shortLanguageCode")}>
+        {weather.dt}
+      </Moment>
+    );
   const feelsLike =
     typeof weather.feels_like === "number"
       ? t("feelsLike", { value: Math.round(weather.feels_like) })
