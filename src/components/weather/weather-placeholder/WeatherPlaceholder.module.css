@@ -1,0 +1,15 @@
+.card {
+  width: 240px;
+  height: 300px;
+  margin: 5px;
+}
+
+.image {
+  height: 80px;
+  width: 80px;
+}
+
+.temperature {
+  height: 40px;
+  width: 40px;
+}

@@ -3,6 +3,7 @@ import { Card, ListGroup, Accordion } from "react-bootstrap";
 import Moment from "react-moment";
 import { useTranslation } from "react-i18next";
 import { Weather } from "../../../app/types";
+import styles from "./WeatherCard.module.css";
 
 interface WeatherCardProps {
   weather: Weather;
@@ -55,7 +56,7 @@ const WeatherCard: FunctionComponent<WeatherCardProps> = ({
     );
 
   return (
-    <Card className="m-1" style={{ width: "240px" }}>
+    <Card className={styles.card}>
       <Card.Header>{date}</Card.Header>
       <Card.Img
         className="w-50 mx-auto"

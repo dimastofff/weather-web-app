@@ -4,6 +4,7 @@ import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { useTranslation } from "react-i18next";
 import { useAppSelector } from "../../app/hooks";
 import { selectLocation } from "../location/locationSlice";
+import styles from "./Header.module.css";
 
 const Header: FunctionComponent = () => {
   const { t, i18n } = useTranslation();
@@ -45,11 +46,10 @@ const Header: FunctionComponent = () => {
     <Nav>
       <Nav.Link eventKey="5" as={Link} to="/location">
         <img
-          style={{ height: "24px", width: "24px" }}
+          className={styles.locationImage}
           src="images/geo-alt.svg"
           alt="geo"
         />
-
         {location?.map((coord: number) => `${coord.toFixed(6)}°`).join(", ")}
       </Nav.Link>
       {languagesDropdown}
