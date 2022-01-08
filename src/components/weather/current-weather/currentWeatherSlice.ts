@@ -24,7 +24,11 @@ export const getCurrentWeather = createAsyncThunk<CurrentWeather, any, any>(
 export const currentWeatherSlice = createSlice({
   name: "currentWeather",
   initialState,
-  reducers: {},
+  reducers: {
+    resetCurrentWeather: (state) => {
+      state.value = undefined;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getCurrentWeather.pending, (state) => {
@@ -39,6 +43,8 @@ export const currentWeatherSlice = createSlice({
       });
   },
 });
+
+export const { resetCurrentWeather } = currentWeatherSlice.actions;
 
 export const selectCurrentWeather = (state: RootState) =>
   state.currentWeather.value;

@@ -13,6 +13,9 @@ import {
 } from "react-yandex-maps";
 import { useAppDispatch } from "../../app/hooks";
 import { updateLocation } from "./locationSlice";
+import { resetCurrentWeather } from "../weather/current-weather/currentWeatherSlice";
+import { resetDailyWeather } from "../weather/daily-weather/dailyWeatherSlice";
+import { resetHourlyWeather } from "../weather/hourly-weather/hourlyWeatherSlice";
 
 const API_KEY = process.env.REACT_APP_YANDEX_MAPS_API_KEY;
 const DEFAULT_MAP_STATE = {
@@ -24,11 +27,10 @@ const DEFAULT_MAP_STATE = {
 const Location: FunctionComponent = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-  const { language }: any = i18n;
+  const dispatch = useAppDispatch();
 
   const [coords, setCoords] = useState<any>(null);
-
-  const dispatch = useAppDispatch();
+  const { language }: any = i18n;
 
   const coordsView = (
     <Card className="w-100">
@@ -47,6 +49,9 @@ const Location: FunctionComponent = () => {
             <Button
               variant="success"
               onClick={() => {
+                dispatch(resetCurrentWeather());
+                dispatch(resetDailyWeather());
+                dispatch(resetHourlyWeather());
                 dispatch(updateLocation(coords));
                 navigate(-1);
               }}
