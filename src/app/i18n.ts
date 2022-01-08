@@ -13,6 +13,7 @@ const resources = {
       currentWeather: "Current weather",
       hourlyWeather: "Forecast for 48 hours",
       dailyWeather: "Forecast for the week",
+      refresh: "Refresh",
       clickOnMap:
         "Mark the place on the map for which you want to know the weather forecast",
       selectedCoordinates: "Selected coordinates",
@@ -23,6 +24,7 @@ const resources = {
       feelsLike: "Feels like: {{value}}°",
       humidity: "Humidity: {{value}}%",
       pressure: "Atmospheric pressure: {{value}} hPa",
+      fetchingError: "Data fetching error",
     },
   },
   ru_RU: {
@@ -35,6 +37,7 @@ const resources = {
       currentWeather: "Текущая погода",
       hourlyWeather: "Прогноз на 48 часов",
       dailyWeather: "Прогноз на неделю",
+      refresh: "Обновить",
       clickOnMap:
         "Отметьте на карте место, для которого вы хотите узнать прогноз погоды",
       selectedCoordinates: "Выбранные координаты",
@@ -45,6 +48,7 @@ const resources = {
       feelsLike: "Ощущается как: {{value}}°",
       humidity: "Влажность: {{value}}%",
       pressure: "Атмосферное давление: {{value}} гПа",
+      fetchingError: "Ошибка при получении данных",
     },
   },
 };

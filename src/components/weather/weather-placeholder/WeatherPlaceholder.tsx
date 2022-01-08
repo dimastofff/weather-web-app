@@ -12,11 +12,10 @@ const WeatherPlaceholder: FunctionComponent = () => {
         <Placeholder animation="glow">
           <Placeholder className={styles.image} />
         </Placeholder>
-        <Placeholder className="my-3" animation="glow">
+        <Placeholder className="my-2" animation="glow">
           <Placeholder className={styles.temperature} />
         </Placeholder>
         <Placeholder animation="glow">
-          <Placeholder className="w-50" /> <Placeholder className="w-25" />
           <Placeholder className="w-50" /> <Placeholder className="w-25" />
           <Placeholder className="w-50" /> <Placeholder className="w-25" />
         </Placeholder>

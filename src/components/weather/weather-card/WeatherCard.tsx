@@ -26,7 +26,7 @@ const WeatherCard: FunctionComponent<WeatherCardProps> = ({
         {weather.dt}
       </Moment>
     ) : (
-      <Moment unix format="LT" locale={t("shortLanguageCode")}>
+      <Moment unix format="ddd, LT" locale={t("shortLanguageCode")}>
         {weather.dt}
       </Moment>
     );
@@ -40,16 +40,16 @@ const WeatherCard: FunctionComponent<WeatherCardProps> = ({
   const temperatureView =
     typeof weather.temp === "number" ? (
       <Card.Body>
-        <Card.Title className="fs-1">{`${Math.round(
+        <Card.Title className="fs-4">{`${Math.round(
           weather.temp
         )}°`}</Card.Title>
       </Card.Body>
     ) : (
       <Card.Body className="d-flex flex-row justify-content-evenly">
-        <Card.Title className="fs-1">{`${Math.round(
+        <Card.Title className="fs-4">{`${Math.round(
           weather.temp.day
         )}°`}</Card.Title>
-        <Card.Title className="fs-1 text-muted">{`${Math.round(
+        <Card.Title className="fs-4 text-muted">{`${Math.round(
           weather.temp.night
         )}°`}</Card.Title>
       </Card.Body>

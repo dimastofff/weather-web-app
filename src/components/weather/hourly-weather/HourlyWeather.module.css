@@ -1,0 +1,7 @@
+.refresh {
+  composes: refresh from "../current-weather/CurrentWeather.module.css";
+}
+
+.refreshRotate {
+  composes: refreshRotate from "../current-weather/CurrentWeather.module.css";
+}

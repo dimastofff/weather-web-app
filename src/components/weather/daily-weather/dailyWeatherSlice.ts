@@ -33,11 +33,16 @@ export const dailyWeatherSlice = createSlice({
       .addCase(getDailyWeather.fulfilled, (state, action) => {
         state.status = "idle";
         state.value = { ...action.payload };
+      })
+      .addCase(getDailyWeather.rejected, (state) => {
+        state.status = "failed";
       });
   },
 });
 
 export const selectDailyWeather = (state: RootState) =>
   state.dailyWeather.value;
+export const selectLoadingStatus = (state: RootState) =>
+  state.dailyWeather.status;
 
 export default dailyWeatherSlice.reducer;

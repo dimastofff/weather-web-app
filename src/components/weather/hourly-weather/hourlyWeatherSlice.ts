@@ -33,11 +33,16 @@ export const hourlyWeatherSlice = createSlice({
       .addCase(getHourlyWeather.fulfilled, (state, action) => {
         state.status = "idle";
         state.value = { ...action.payload };
+      })
+      .addCase(getHourlyWeather.rejected, (state) => {
+        state.status = "failed";
       });
   },
 });
 
 export const selectHourlyWeather = (state: RootState) =>
   state.hourlyWeather.value;
+export const selectLoadingStatus = (state: RootState) =>
+  state.hourlyWeather.status;
 
 export default hourlyWeatherSlice.reducer;
