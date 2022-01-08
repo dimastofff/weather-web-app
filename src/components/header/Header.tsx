@@ -61,7 +61,7 @@ const Header: FunctionComponent = () => {
       <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
         <Container>
           <Navbar.Brand as={Link} to="/">
-            <h1>{t("welcoming")}</h1>
+            {t("welcoming")}
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
