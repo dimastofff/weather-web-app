@@ -60,7 +60,7 @@ const WeatherCard: FunctionComponent<WeatherCardProps> = ({
     <Card className={styles.card}>
       <Card.Header>{date}</Card.Header>
       <Card.Img
-        className="w-50 mx-auto"
+        className={styles.image}
         variant="top"
         src={`/images/weather/${weather.weather[0].icon}.png`}
       />
