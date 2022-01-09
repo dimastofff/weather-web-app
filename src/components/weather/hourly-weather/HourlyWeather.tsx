@@ -15,14 +15,14 @@ import WeatherPlaceholder from "../weather-placeholder/WeatherPlaceholder";
 import styles from "./HourlyWeather.module.css";
 
 const HourlyWeather: FunctionComponent = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const status = useAppSelector(selectLoadingStatus);
   const weather = useAppSelector(selectHourlyWeather);
   const location = useAppSelector(selectLocation);
-  const language = t("shortLanguageCode");
+  const { language } = i18n;
 
   useEffect(() => {
     if (!location) {

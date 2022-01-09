@@ -8,6 +8,7 @@ import * as serviceWorker from "./serviceWorker";
 import "./app/i18n";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "moment/locale/de";
 import "moment/locale/ru";
 
 ReactDOM.render(

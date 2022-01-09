@@ -20,7 +20,6 @@ const App: FunctionComponent = () => {
           <Route path="/location" element={<Location />} />
         </Routes>
       </main>
-      <footer></footer>
     </>
   );
 };

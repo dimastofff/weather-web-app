@@ -14,19 +14,20 @@ const WeatherCard: FunctionComponent<WeatherCardProps> = ({
   weather,
   type,
 }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const { language } = i18n;
 
   const date =
     type === "daily" ? (
-      <Moment unix format="ddd, D MMM" locale={t("shortLanguageCode")}>
+      <Moment unix format="ddd D MMM" locale={language}>
         {weather.dt}
       </Moment>
     ) : type === "current" ? (
-      <Moment unix format="D MMMM LT" locale={t("shortLanguageCode")}>
+      <Moment unix format="D MMMM LT" locale={language}>
         {weather.dt}
       </Moment>
     ) : (
-      <Moment unix format="ddd, LT" locale={t("shortLanguageCode")}>
+      <Moment unix format="ddd LT" locale={language}>
         {weather.dt}
       </Moment>
     );

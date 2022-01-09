@@ -26,19 +26,19 @@ const DEFAULT_MAP_STATE = {
 };
 
 const Location: FunctionComponent = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const location = useAppSelector(selectLocation);
-  const { language }: any = i18n;
+  const language: any = t("yandexLanguage");
 
   return (
     <section>
       <Card.Title className="text-center">{t("clickOnMap")}</Card.Title>
       <YMaps key={language} query={{ lang: language, apikey: API_KEY }}>
         <Map
-          height="78vh"
+          height="82vh"
           width="100%"
           defaultState={DEFAULT_MAP_STATE}
           onClick={(e: any) => dispatch(updateLocation(e.get("coords")))}
@@ -60,16 +60,18 @@ const Location: FunctionComponent = () => {
               dispatch(updateLocation(selected));
             }}
           />
-          <Button
-            data={{ content: t("confirm") }}
-            options={{ float: "right" }}
-            onClick={() => {
-              dispatch(resetCurrentWeather());
-              dispatch(resetDailyWeather());
-              dispatch(resetHourlyWeather());
-              navigate(-1);
-            }}
-          />
+          {location ? (
+            <Button
+              data={{ content: t("confirm") }}
+              options={{ float: "right" }}
+              onClick={() => {
+                dispatch(resetCurrentWeather());
+                dispatch(resetDailyWeather());
+                dispatch(resetHourlyWeather());
+                navigate(-1);
+              }}
+            />
+          ) : null}
           <Placemark geometry={location} />
         </Map>
       </YMaps>

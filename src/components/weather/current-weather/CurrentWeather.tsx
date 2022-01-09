@@ -14,14 +14,14 @@ import WeatherPlaceholder from "../weather-placeholder/WeatherPlaceholder";
 import styles from "./CurrentWeather.module.css";
 
 const CurrentWeather: FunctionComponent = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
   const status = useAppSelector(selectLoadingStatus);
   const weather = useAppSelector(selectCurrentWeather);
   const location = useAppSelector(selectLocation);
-  const language = t("shortLanguageCode");
+  const { language } = i18n;
 
   useEffect(() => {
     if (!location) {

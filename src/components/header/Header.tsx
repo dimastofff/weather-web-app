@@ -13,16 +13,13 @@ const Header: FunctionComponent = () => {
 
   const languagesDropdown = (
     <NavDropdown id="collasible-nav-dropdown" title={t("fullLanguageName")}>
-      <NavDropdown.Item
-        eventKey="0"
-        onClick={() => i18n.changeLanguage("en_US")}
-      >
+      <NavDropdown.Item eventKey="0" onClick={() => i18n.changeLanguage("en")}>
         {t("english")}
       </NavDropdown.Item>
-      <NavDropdown.Item
-        eventKey="1"
-        onClick={() => i18n.changeLanguage("ru_RU")}
-      >
+      <NavDropdown.Item eventKey="1" onClick={() => i18n.changeLanguage("de")}>
+        {t("deutsch")}
+      </NavDropdown.Item>
+      <NavDropdown.Item eventKey="2" onClick={() => i18n.changeLanguage("ru")}>
         {t("russian")}
       </NavDropdown.Item>
     </NavDropdown>
