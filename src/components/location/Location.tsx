@@ -19,18 +19,13 @@ import { resetDailyWeather } from "../weather/daily-weather/dailyWeatherSlice";
 import { resetHourlyWeather } from "../weather/hourly-weather/hourlyWeatherSlice";
 
 const API_KEY = process.env.REACT_APP_YANDEX_MAPS_API_KEY;
-const DEFAULT_MAP_STATE = {
-  center: [53.9, 27.56667],
-  zoom: 9,
-  controls: [],
-};
 
 const Location: FunctionComponent = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
 
-  const location = useAppSelector(selectLocation);
+  const location: any = useAppSelector(selectLocation);
   const language: any = t("yandexLanguage");
 
   return (
@@ -40,7 +35,11 @@ const Location: FunctionComponent = () => {
         <Map
           height="82vh"
           width="100%"
-          defaultState={DEFAULT_MAP_STATE}
+          defaultState={{
+            center: location || [53.9, 27.56667],
+            zoom: 9,
+            controls: [],
+          }}
           onClick={(e: any) => dispatch(updateLocation(e.get("coords")))}
         >
           <ZoomControl options={{ float: "left" }} />
