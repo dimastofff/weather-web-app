@@ -4,8 +4,8 @@ Simple web app implemented using reactjs/redux/typescript stack to view weather 
 
 [Example](https://wthr-web-app.herokuapp.com/)
 
-![Desktop view](https://drive.google.com/u/0/uc?id=1YQ1sNCrrFsUxOtg8li_JFNmN3NhPt4ql&export=download "Desktop view")
-![Mobile view](https://drive.google.com/u/0/uc?id=1b5Wyl46W-Kfjrd2VLC73GN0cQZD3QvUP&export=download "Mobile view")
+![Desktop view](images/DesktopView.gif "Desktop view")
+![Mobile view](images/MobileView.gif "Mobile view")
 
 ### How to run project
 
