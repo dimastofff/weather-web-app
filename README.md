@@ -1,6 +1,6 @@
 # weather-web-app
 
-Simple web app implemented using reactjs/redux/typescript stack to view weather forecasts from OpenWeatherMapAPI.
+Simple web app implemented using reactjs/redux/typescript stack to view weather forecasts from `OpenWeatherMapAPI`. Selecting and searching for a location using `YandexMapsAPI`. Multilingual support using `i18n`.
 
 [Example](https://wthr-web-app.herokuapp.com/)
 
