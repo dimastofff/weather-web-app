@@ -59,10 +59,10 @@ const WeatherCard: FunctionComponent<WeatherCardProps> = ({
   return (
     <Card className={styles.card}>
       <Card.Header>{date}</Card.Header>
-      <Card.Img
+      <img
         className={styles.image}
-        variant="top"
         src={`/images/weather/${weather.weather[0].icon}.png`}
+        alt={weather.weather[0].icon}
       />
       {temperatureView}
       <Accordion>
