@@ -21,7 +21,6 @@ export type Weather = {
   feels_like: number | DailyTemperature;
   pressure: number;
   humidity: number;
-  dew_point: number;
   uvi: number;
   wind_speed: number;
   wind_deg: number;

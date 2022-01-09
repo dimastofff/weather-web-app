@@ -3,6 +3,7 @@ import { Card, ListGroup, Accordion } from "react-bootstrap";
 import Moment from "react-moment";
 import { useTranslation } from "react-i18next";
 import { Weather } from "../../../app/types";
+import { getWindDirection } from "../../../app/utils";
 import styles from "./WeatherCard.module.css";
 
 interface WeatherCardProps {
@@ -37,6 +38,11 @@ const WeatherCard: FunctionComponent<WeatherCardProps> = ({
       : t("feelsLike", { value: Math.round(weather.feels_like.day) });
   const humidity = t("humidity", { value: weather.humidity });
   const pressure = t("pressure", { value: weather.pressure });
+  const windDirection = t(getWindDirection(weather.wind_deg));
+  const wind = t("wind", {
+    direction: windDirection,
+    speed: weather.wind_speed,
+  });
 
   const temperatureView =
     typeof weather.temp === "number" ? (
@@ -56,6 +62,24 @@ const WeatherCard: FunctionComponent<WeatherCardProps> = ({
       </Card.Body>
     );
 
+  const sunriseSunsetView =
+    type !== "hourly" ? (
+      <>
+        <ListGroup.Item>
+          {t("sunrise")}
+          <Moment unix format="LT" locale={language}>
+            {weather.sunrise}
+          </Moment>
+        </ListGroup.Item>
+        <ListGroup.Item>
+          {t("sunset")}
+          <Moment unix format="LT" locale={language}>
+            {weather.sunset}
+          </Moment>
+        </ListGroup.Item>
+      </>
+    ) : null;
+
   return (
     <Card className={styles.card}>
       <Card.Header>{date}</Card.Header>
@@ -73,6 +97,8 @@ const WeatherCard: FunctionComponent<WeatherCardProps> = ({
               <ListGroup.Item>{feelsLike}</ListGroup.Item>
               <ListGroup.Item>{humidity}</ListGroup.Item>
               <ListGroup.Item>{pressure}</ListGroup.Item>
+              <ListGroup.Item>{wind}</ListGroup.Item>
+              {sunriseSunsetView}
             </ListGroup>
           </Accordion.Body>
         </Accordion.Item>
